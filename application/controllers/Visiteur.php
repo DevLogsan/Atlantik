@@ -8,7 +8,6 @@ class Visiteur extends CI_Controller {
         $this->load->helper('assets');
         $this->load->library("pagination");
         $this->load->model('ModeleUtilisateur');
-        $this->load->library('session');
     }
 
     public function seConnecter()
@@ -35,9 +34,10 @@ class Visiteur extends CI_Controller {
 
         if (!($UtilisateurRetourner == null)) 
         {
-            $this->session->Mel = $UtilisateurRetourner->mel;
 
-            $DonneesInjectees['Mel'] = $Mel; 
+            $DonneesInjectees['Mel'] = $UtilisateurRetourner->mel; 
+            $DonneesInjectees['Prenom'] = $UtilisateurRetourner->prenom; 
+            
             $this->load->view('templates/Header');
             $this->load->view('visiteur/accueil', $DonneesInjectees);
             $this->load->view('templates/Footer');
