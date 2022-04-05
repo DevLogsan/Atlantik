@@ -8,6 +8,14 @@ class Visiteur extends CI_Controller {
         $this->load->helper('assets');
         $this->load->library("pagination");
         $this->load->model('ModeleUtilisateur');
+        $this->session->statut(0);
+    }
+
+    public function accueil()
+    {
+        $this->load->view('templates/Header');
+        $this->load->view('visiteur/accueil');
+        $this->load->view('templates/Footer');
     }
 
     public function seConnecter()
@@ -32,22 +40,22 @@ class Visiteur extends CI_Controller {
             $MdP = $this->input->post('txtMotDePasse');
             $UtilisateurRetourner = $this->ModeleUtilisateur->retournerUtilisateur($Mel, $MdP);
 
-        if (!($UtilisateurRetourner == null)) 
-        {
+            if (!($UtilisateurRetourner == null)) 
+            {
+                $DonneesInjectees['Mel'] = $UtilisateurRetourner->mel;
+                $DonneesInjectees['Prenom'] = $UtilisateurRetourner->prenom;
 
-            $DonneesInjectees['Mel'] = $UtilisateurRetourner->mel; 
-            $DonneesInjectees['Prenom'] = $UtilisateurRetourner->prenom; 
-            
-            $this->load->view('templates/Header');
-            $this->load->view('visiteur/accueil', $DonneesInjectees);
-            $this->load->view('templates/Footer');
-        }
-        else
-        {
-            $this->load->view('templates/Header');
-            $this->load->view('visiteur/seConnecter', $DonneesInjectees);
-            $this->load->view('templates/Footer');
-        }
+                $this->session_id(1);
+                $this->load->view('templates/Header');
+                $this->load->view('visiteur/ConnectionReussite', $DonneesInjectees);
+                $this->load->view('templates/Footer');
+            }
+            else
+            {
+                $this->load->view('templates/Header');
+                $this->load->view('visiteur/seConnecter', $DonneesInjectees);
+                $this->load->view('templates/Footer');
+            }
         }
     }
 }
