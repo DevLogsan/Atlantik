@@ -15,7 +15,6 @@ class Visiteur extends CI_Controller {
     public function accueil()
     {
         $this->load->view('templates/Header');
-        $this->load->view('visiteur/accueil');
         $this->load->view('templates/Footer');
     }
 
@@ -39,18 +38,15 @@ class Visiteur extends CI_Controller {
             $Mel = $this->input->post('txtMel');
             $MdP = $this->input->post('txtMotDePasse');
             $UtilisateurRetourner = $this->ModeleUtilisateur->retournerUtilisateur($Mel, $MdP);
-            $UtilisateurInformation = $this->ModeleUtilisateur->retournerInformationUtilisateur();
 
             if (!($UtilisateurRetourner == null)) 
             {
-                $this->session->nom = $UtilisateurInformation->nom;
-                $this->session->prenom = $UtilisateurInformation->prenom;
+                $this->session->nom = $UtilisateurRetourner->nom;
+                $this->session->prenom = $UtilisateurRetourner->prenom;
 
                 $this->session->UtilisateurConnecter = 1;
                 
                 redirect('/visiteur/accueil');
-                //$this->load->view('visiteur/ConnectionReussite', $DonneesInjectees);
-                //$this->load->view('templates/Footer');
             }
             else
             {

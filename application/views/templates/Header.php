@@ -17,16 +17,14 @@
     <ul class="navbar-nav">
         <?php if ($this->session->UtilisateurConnecter == 1) : ?>
             <li class="nav-item">
-                <span class="navbar-text">
-                    <?php echo 'Utilisateur : '.$this->session->prenom;?>
-                </span>
+                    <a class="nav-link" href="<?php echo site_url('client/parametre') ?>">Mon compte : <?php echo $this->session->nom,' '.$this->session->prenom ;?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Se déconnecter</a>
             </li>
         <?php if ($this->session->UtilisateurConnecter == 1) : ?>
-            <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Réserver une traversée</a>
-            <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Mon compte</a>
+            <a class="nav-link" href="<?php echo site_url('client/reserverTraversee') ?>">Réserver une traversée</a>
+            <a class="nav-link" href="<?php echo site_url('client/historiqueReservation') ?>">Mes réservations</a>
         <?php endif; ?>
         <?php else : ?>
             <li class="nav-item">
@@ -34,17 +32,13 @@
             </li>
         <?php endif; ?>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Lister
+                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
+                    Plus
                 </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="<?php echo site_url('visiteur/listerLesArticles') ?>">Lister tous les Articles</a>
-                <a class="dropdown-item" href="<?php echo site_url('visiteur/listerLesArticlesAvecPagination') ?>">Lister les Articles (par 3)</a>
+                <a class="dropdown-item" href="<?php echo site_url('visiteur/listerLesLiaisons') ?>">Lister les liaisons</a>
+                <a class="dropdown-item" href="<?php echo site_url('visiteur/horairesDeTraversees') ?>">Horaires de traversées</a>
             </div>
         </li>
-    <form class="form-inline" action="/action_page.php">
-      <input class="form-control mr-sm-2" type="text" placeholder="Chercher">
-      <button class="btn btn-success" type="submit">Chercher</button>
-    </form>
-  </ul>
+    </ul>
 </nav>

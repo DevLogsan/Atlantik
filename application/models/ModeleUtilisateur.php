@@ -11,9 +11,4 @@
         $requete = $this->db->get_where('client',array('mel' => $Mel, 'motdepasse'=>$MotdePasse));
         return $requete->row();
     }
-
-    public function retournerInformationUtilisateur()
-    {
-        $query = $this->db->get('client');
-    }
 }
