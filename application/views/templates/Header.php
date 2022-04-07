@@ -15,24 +15,18 @@
             <img src="<?php echo img_url('bateau.png') ?>" alt="Logo" style="width:40px;">
         </a>
     <ul class="navbar-nav">
-        <?php if ($this->session_id = 1) : ?>
+        <?php if ($this->session->UtilisateurConnecter == 1) : ?>
             <li class="nav-item">
                 <span class="navbar-text">
-                    <?php echo 'Utilisateur : '.$UtilisateurRetourner->$Prenom;?>
+                    <?php echo 'Utilisateur : '.$this->session->prenom;?>
                 </span>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Se déconnecter</a>
             </li>
-        <?php if ($this->session->statut==1) : ?>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Ajouter
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?php echo site_url('administrateur/ajouterUnArticle') ?>">Ajouter un article</a>
-                </div>
-            </li>
+        <?php if ($this->session->UtilisateurConnecter == 1) : ?>
+            <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Réserver une traversée</a>
+            <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Mon compte</a>
         <?php endif; ?>
         <?php else : ?>
             <li class="nav-item">
