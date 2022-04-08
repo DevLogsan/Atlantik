@@ -27,7 +27,8 @@ class Client extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-
+        $NoClient = $this->input->post('');
+        $UtilisateurRetourner = $this->ModeleUtilisateur->retournerUtilisateur($NoClient);
     }
 }
 ?>
