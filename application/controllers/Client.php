@@ -21,11 +21,6 @@ class Client extends CI_Controller {
         $noclient = $this->session->noclient;
         
         $ParametresRetourner = $this->ModeleUtilisateur->retournerRemplissageParametre($noclient);
-        
-        $data = array(
-            'class' => 'titleInput',
-            'style' => 'height:30px'
-        ); // A FINIR
 
         $data = array(
             'nom' => $ParametresRetourner->nom,
@@ -37,6 +32,9 @@ class Client extends CI_Controller {
             'telephonemobile' => $ParametresRetourner->telephonemobile,
             'mel' => $ParametresRetourner->mel,
             'motdepasse' => $ParametresRetourner->motdepasse,
+			
+			'class' => 'form-control',
+            'style' => 'height:50px'
           );
         $this->load->helper('form');
 
