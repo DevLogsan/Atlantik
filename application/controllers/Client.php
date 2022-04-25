@@ -18,17 +18,23 @@ class Client extends CI_Controller {
 
     public function parametre()
     {
+        $noclient = $this->session->noclient;
+        
+        
+        $ParametresRetourner = $this->ModeleUtilisateur->retournerRemplissageParametre($noclient);
+        
         $this->load->view('templates/Header');
-        $this->load->view('client/parametre');
-    }
-
-    public function modifierParametre()
-    {
         $this->load->helper('form');
-        $this->load->library('form_validation');
 
-        $NoClient = $this->input->post('');
-        $UtilisateurRetourner = $this->ModeleUtilisateur->retournerUtilisateur($NoClient);
+        $this->load->view('client/parametre');
+        $this->load->view('templates/Footer');
     }
 }
 ?>
+
+<!-- $data['nom'] = array(
+            'nom'  => 'txtNom',
+            'value' => $this->session->nom,
+            'class' => 'form-control'
+          );
+-->

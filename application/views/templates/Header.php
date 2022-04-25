@@ -11,13 +11,13 @@
     </head>
 <body> 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?php echo site_url('visiteur/accueil') ?>">
             <img src="<?php echo img_url('bateau.png') ?>" alt="Logo" style="width:40px;">
         </a>
     <ul class="navbar-nav">
         <?php if ($this->session->UtilisateurConnecter == 1) : ?>
             <li class="nav-item">
-                    <a class="nav-link" href="<?php echo site_url('client/parametre') ?>">Mon compte : <?php echo $this->session->nom,' '.$this->session->prenom ;?></a>
+                <a class="nav-link" href="<?php echo site_url('client/parametre') ?>">Mon compte : <?php echo $this->session->nom,' '.$this->session->prenom ;?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Se déconnecter</a>
@@ -42,3 +42,4 @@
         </li>
     </ul>
 </nav>
+<BR><BR><BR><BR><BR>

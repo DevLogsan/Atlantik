@@ -14,7 +14,7 @@
 
     public function retournerRemplissageParametre($NoClient)
     {
-        $requete = $this->db->get_where('client',array('noclient' => $NoClient));
+        $requete = $this->db->get_where('client', array('noclient' => $NoClient));
         return $requete->row();
     }
 }

@@ -7,7 +7,7 @@
 
   echo form_open('visiteur/seconnecter');
   echo form_label('Mel','txtMel');
-  echo form_input('txtMel', set_value('txtMel'));  
+  echo form_input('txtMel', set_value('txtMel'));
 
   echo form_label('Mot de passe','txtMotDePasse');
   echo form_password('txtMotDePasse', set_value('txtMotDePasse'));   
