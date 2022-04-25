@@ -3,7 +3,7 @@
 
   echo form_open('Client/parametre');
   echo form_label('Nom : ');
-  echo form_input('txtNom', $nom);
+  echo form_input('txtNom', $nom, $class);
   echo '<br>';
   echo form_label('Prénom : ');
   echo form_input('txtPrenom', $prenom);
