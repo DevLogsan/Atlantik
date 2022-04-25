@@ -3,10 +3,10 @@
 
   echo form_open('Client/parametre');
   echo form_label('Nom : ');
-  echo form_input('txtNom', $nom, $class);
+  echo form_input('txtNom', $nom, $class, $style);
   echo '<br>';
   echo form_label('Prénom : ');
-  echo form_input('txtPrenom', $prenom);
+  echo form_input('txtPrenom', $prenom, $class, $style);
   echo '<br>';
   echo form_label('Adresse : ');
   echo form_input('txtAdresse', $adresse);
