@@ -22,7 +22,7 @@ class Client extends CI_Controller {
         
         $ParametresRetourner = $this->ModeleUtilisateur->retournerRemplissageParametre($noclient);
         
-        $form = array(
+        $data = array(
             'class' => 'titleInput',
             'style' => 'height:30px'
         ); // A FINIR
@@ -53,7 +53,7 @@ class Client extends CI_Controller {
         if ($this->form_validation->run() === FALSE) 
         {
             $this->load->view('templates/Header');
-            $this->load->view('client/parametre', $data, $form);
+            $this->load->view('client/parametre', $data);
             $this->load->view('templates/Footer');
         }
         else
