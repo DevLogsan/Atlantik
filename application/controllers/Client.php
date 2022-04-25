@@ -32,8 +32,8 @@ class Client extends CI_Controller {
             'telephonemobile' => $ParametresRetourner->telephonemobile,
             'mel' => $ParametresRetourner->mel,
             'motdepasse' => $ParametresRetourner->motdepasse,
-			
-			'class' => 'form-control',
+	
+	'class' => 'form-control',
             'style' => 'height:50px'
           );
         $this->load->helper('form');
