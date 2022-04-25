@@ -44,7 +44,7 @@ class Visiteur extends CI_Controller {
             {
                 $this->session->nom = $UtilisateurRetourner->nom;
                 $this->session->prenom = $UtilisateurRetourner->prenom;
-
+                $this->session->noclient = $UtilisateurRetourner->noclient;
                 $this->session->UtilisateurConnecter = 1;
                 
                 redirect('/visiteur/accueil');

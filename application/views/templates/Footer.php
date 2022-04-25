@@ -9,9 +9,9 @@
 <style>
     footer{
     position:absolute;
-    bottom:0;  /* on le colle en bas */
+    bottom:0;
     width:100%;
     height:50px;
-    background-color: grey;
+    background-color: #343a40!important;
 }
 </style>

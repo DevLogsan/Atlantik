@@ -17,4 +17,11 @@
         $requete = $this->db->get_where('client', array('noclient' => $NoClient));
         return $requete->row();
     }
+
+    public function modificationDesParametres($NoClient, $donneesAInserer)
+    {
+        $this->db->set($donneesAInserer);
+        $this->db->where('noclient', $NoClient);
+        $this->db->update('client');
+    }
 }
