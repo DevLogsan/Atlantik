@@ -33,8 +33,9 @@ class Client extends CI_Controller {
             'mel' => $ParametresRetourner->mel,
             'motdepasse' => $ParametresRetourner->motdepasse,
 	
-	'class' => 'form-control',
-            'style' => 'height:50px'
+	        'class_input' => 'class = "form-control input-sm"',
+            'type' => 'type="button"',
+            'class_btn' => 'class="btn btn-success"'
           );
         $this->load->helper('form');
 
