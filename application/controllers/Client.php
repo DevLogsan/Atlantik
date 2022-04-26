@@ -9,10 +9,11 @@ class Client extends CI_Controller {
         $this->load->model('ModeleUtilisateur');
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->helper('form');
         
         if ($this->session->UtilisateurConnecter == 0)
         {
-            redirect('/visiteur/seConnecter');
+            redirect('/visiteur/login_up');
         }
     }
 
@@ -31,13 +32,8 @@ class Client extends CI_Controller {
             'telephonefixe' => $ParametresRetourner->telephonefixe,
             'telephonemobile' => $ParametresRetourner->telephonemobile,
             'mel' => $ParametresRetourner->mel,
-            'motdepasse' => $ParametresRetourner->motdepasse,
-	
-	        'class_input' => 'class = "form-control input-sm"',
-            'type' => 'type="button"',
-            'class_btn' => 'class="btn btn-success"'
+            'motdepasse' => $ParametresRetourner->motdepasse
           );
-        $this->load->helper('form');
 
         $this->form_validation->set_rules('txtNom', 'Nom', 'required');
         $this->form_validation->set_rules('txtPrenom', 'Nom', 'required');
@@ -57,19 +53,19 @@ class Client extends CI_Controller {
         }
         else
         {
-        $donneesAInserer = array(
-            'nom' => $this->input->post('txtNom'),
-            'prenom' => $this->input->post('txtPrenom'),
-            'adresse' => $this->input->post('txtAdresse'),
-            'codepostal' => $this->input->post('txtCodePostal'),
-            'ville' => $this->input->post('txtVille'),
-            'telephonefixe' => $this->input->post('txtTelFixe'),
-            'telephonemobile' => $this->input->post('txtTelMobile'),
-            'mel' => $this->input->post('txtMel'),
-            'motdepasse' => $this->input->post('txtMotDePasse'),
-        );
-        $this->ModeleUtilisateur->modificationDesParametres($noclient, $donneesAInserer);
+            $donneesAInserer = array(
+                'nom' => $this->input->post('txtNom'),
+                'prenom' => $this->input->post('txtPrenom'),
+                'adresse' => $this->input->post('txtAdresse'),
+                'codepostal' => $this->input->post('txtCodePostal'),
+                'ville' => $this->input->post('txtVille'),
+                'telephonefixe' => $this->input->post('txtTelFixe'),
+                'telephonemobile' => $this->input->post('txtTelMobile'),
+                'mel' => $this->input->post('txtMel'),
+                'motdepasse' => $this->input->post('txtMotDePasse'),
+            );
 
+        $this->ModeleUtilisateur->modificationDesParametres($noclient, $donneesAInserer);
         redirect('client/parametre', 'refresh');
         }
     }

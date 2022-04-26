@@ -17,18 +17,21 @@
     <ul class="navbar-nav">
         <?php if ($this->session->UtilisateurConnecter == 1) : ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('client/parametre') ?>">Mon compte : <?php echo $this->session->nom,' '.$this->session->prenom ;?></a>
+                <a class="nav-link" href="<?php echo site_url('client/parametre') ?>">My account : <?php echo $this->session->nom,' '.$this->session->prenom ;?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('visiteur/seDeconnecter') ?>">Se déconnecter</a>
+                <a class="nav-link" href="<?php echo site_url('visiteur/logout') ?>">Logout</a>
             </li>
         <?php if ($this->session->UtilisateurConnecter == 1) : ?>
-            <a class="nav-link" href="<?php echo site_url('client/reserverTraversee') ?>">Réserver une traversée</a>
-            <a class="nav-link" href="<?php echo site_url('client/historiqueReservation') ?>">Mes réservations</a>
+            <a class="nav-link" href="<?php echo site_url('client/reserverTraversee') ?>">Book a crossing (Réserver une traversée)</a>
+            <a class="nav-link" href="<?php echo site_url('client/historiqueReservation') ?>">My reservations (Mes réservations)</a>
         <?php endif; ?>
         <?php else : ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('visiteur/seConnecter') ?>">Se Connecter</a>
+                <a class="nav-link" href="<?php echo site_url('visiteur/login_up') ?>">Se Connecter</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="<?php echo site_url('visiteur/register') ?>">Créer un compte</a>
             </li>
         <?php endif; ?>
             <li class="nav-item dropdown">
