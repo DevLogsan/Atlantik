@@ -21,4 +21,16 @@
             $requete = $this->db->get();
             return $requete->result();
     }
+
+    public function retournerSecteurs()
+    {
+        $query = $this->db->get('secteur');
+        return $query->result();
+    }
+
+    //public function quantiteEnregistree($noTraversee, $lettreCategorie)
+    //public function getLesTraverseesBateaux($noLiaison, $dateTraversee)
+//public function getCapaciteMaximale($noTraversee, $lettreCategorie)
+//public function getLesTraverseesBateaux($noLiaison, $dateTraversee)
+
 }

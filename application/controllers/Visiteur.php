@@ -106,13 +106,27 @@ class Visiteur extends CI_Controller {
     public function list_bindings()
     {
         $data['lesLiaisonsParSecteurs'] = $this->ModeleInsert->getLiaisonsParSecteur();
+        
         $this->load->view('templates/Header.php');
         $this->load->view('visiteur/list_bindings', $data);
     }
 
     public function crossing_times()
     {
+        //$data['LesTraverseesBateaux'] = $this->ModeleInsert->getLesTraverseesBateaux();
+        //$data['QuantiteEnregistree'] = $this->ModeleInsert->QuantiteEnregistree();
+        //$data['CapaciteMaximale'] = $this->ModeleInsert->getCapaciteMaximale();
+        //$data['LesCategories'] = $this->ModeleInsert->getLesCategories();
+        $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
+
         $this->load->view('templates/Header');
+        $this->load->view('visiteur/crossing_times', $data);
+    }
+
+    public function crossing_times_select()
+    {
+        $this->load->view('templates/Header');
+        $this->load->view('crossing_times_select');
     }
 }
 ?>
