@@ -11,7 +11,7 @@
     </head>
 <body> 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="<?php echo site_url('visiteur/accueil') ?>">
+        <a class="navbar-brand" href="<?php echo site_url('visiteur/homepage') ?>">
             <img src="<?php echo img_url('bateau.png') ?>" alt="Logo" style="width:40px;">
         </a>
     <ul class="navbar-nav">
@@ -36,11 +36,11 @@
         <?php endif; ?>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
-                    Plus
+                    More
                 </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="<?php echo site_url('visiteur/listerLesLiaisons') ?>">Lister les liaisons</a>
-                <a class="dropdown-item" href="<?php echo site_url('visiteur/horairesDeTraversees') ?>">Horaires de traversées</a>
+                <a class="dropdown-item" href="<?php echo site_url('visiteur/list_bindings') ?>">List bindings (Lister les liaisons)</a>
+                <a class="dropdown-item" href="<?php echo site_url('visiteur/crossing_times') ?>">Crossing times (Horaires de traversées)</a>
             </div>
         </li>
     </ul>

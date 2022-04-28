@@ -15,7 +15,7 @@ class Visiteur extends CI_Controller {
         $this->session->statut = 0;
     }
 
-    public function accueil()
+    public function homepage()
     {
         $this->load->view('templates/Header');
         $this->load->view('templates/Footer');
@@ -47,7 +47,7 @@ class Visiteur extends CI_Controller {
                 $this->session->noclient = $UtilisateurRetourner->noclient;
                 $this->session->UtilisateurConnecter = 1;
                 
-                redirect('/visiteur/accueil');
+                redirect('/visiteur/homepage');
             }
             else
             {
@@ -100,7 +100,19 @@ class Visiteur extends CI_Controller {
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('/visiteur/accueil');
+        redirect('/visiteur/homepage');
+    }
+
+    public function list_bindings()
+    {
+        $data['lesLiaisonsParSecteurs'] = $this->ModeleInsert->getLiaisonsParSecteur();
+        $this->load->view('templates/Header.php');
+        $this->load->view('visiteur/list_bindings', $data);
+    }
+
+    public function crossing_times()
+    {
+        $this->load->view('templates/Header');
     }
 }
 ?>
