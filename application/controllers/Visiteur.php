@@ -122,11 +122,5 @@ class Visiteur extends CI_Controller {
         $this->load->view('templates/Header');
         $this->load->view('visiteur/crossing_times', $data);
     }
-
-    public function crossing_times_select()
-    {
-        $this->load->view('templates/Header');
-        $this->load->view('crossing_times_select');
-    }
 }
 ?>
