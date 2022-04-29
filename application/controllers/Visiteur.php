@@ -121,6 +121,7 @@ class Visiteur extends CI_Controller {
 
         $this->load->view('templates/Header');
         $this->load->view('visiteur/crossing_times', $data);
+		$this->load->view('visiteur/select_liaisons', $data);
     }
 }
 ?>
