@@ -60,7 +60,7 @@ class Visiteur extends CI_Controller {
 
     public function register()
     {
-        $data['TitreDeLaPage'] = 'Register';
+        $data['Titre'] = 'Register';
 
         $this->form_validation->set_rules('txtNom', 'Nom', 'required');
         $this->form_validation->set_rules('txtPrenom', 'Nom', 'required');
