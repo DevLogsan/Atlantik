@@ -33,9 +33,11 @@
 
   echo form_label('Password : ','', array('style' => 'color: white;'));
   echo form_password(array('name' => 'txtMotDePasse', 'style' => 'width: 100%; padding: 12px; resize: vertical; border-radius: 4px; border: 1px solid #ccc;'));
+
   echo "<div style='padding-top: 10px;'>";
   echo form_submit(array('type' => 'submit', 'value' => 'Here we go !', 'style' => 'width: 100px; padding: 12px; resize: vertical; border-radius: 4px; border: 1px solid #ccc;'));
   echo "</div>";
+  
   echo form_close();
   echo  "</div>";
 ?>

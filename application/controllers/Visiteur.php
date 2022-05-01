@@ -107,21 +107,38 @@ class Visiteur extends CI_Controller {
     {
         $data['lesLiaisonsParSecteurs'] = $this->ModeleInsert->getLiaisonsParSecteur();
         
-        $this->load->view('templates/Header.php');
+        $this->load->view('templates/Header');
         $this->load->view('visiteur/list_bindings', $data);
     }
 
-    public function crossing_times()
+    public function crossing_times($liaison = null)
     {
-        //$data['LesTraverseesBateaux'] = $this->ModeleInsert->getLesTraverseesBateaux();
-        //$data['QuantiteEnregistree'] = $this->ModeleInsert->QuantiteEnregistree();
-        //$data['CapaciteMaximale'] = $this->ModeleInsert->getCapaciteMaximale();
-        //$data['LesCategories'] = $this->ModeleInsert->getLesCategories();
-        $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
+        if($liaison === null)
+        {
+            $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
+            $this->load->view('templates/Header');
+            $this->load->view('visiteur/crossing_times', $data);
+        }
+        else
+        {
+            $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
+            $this->load->view('templates/Header');
+            $this->load->view('visiteur/crossing_times', $data);
 
-        $this->load->view('templates/Header');
-        $this->load->view('visiteur/crossing_times', $data);
-		$this->load->view('visiteur/select_liaisons', $data);
+            $di['unSecteur'] = $this->ModeleInsert->getLiaisonsParSecteurID($liaison);
+            if (empty($di['unSecteur']))
+            {
+                $di['Erreur'] = 'Aucune traversée disponible !';
+            }
+            $this->load->view('visiteur/option_liaison', $di);
+        }
     }
 }
 ?>
+
+<!--
+    $data['LesTraverseesBateaux'] = $this->ModeleInsert->getLesTraverseesBateaux();
+    $data['QuantiteEnregistree'] = $this->ModeleInsert->QuantiteEnregistree();
+    $data['CapaciteMaximale'] = $this->ModeleInsert->getCapaciteMaximale();
+    $data['LesCategories'] = $this->ModeleInsert->getLesCategories();
+-->
