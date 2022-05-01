@@ -111,9 +111,9 @@ class Visiteur extends CI_Controller {
         $this->load->view('visiteur/list_bindings', $data);
     }
 
-    public function crossing_times($liaison = null)
+    public function crossing_times($secteur = null)
     {
-        if($liaison === null)
+        if($secteur === null)
         {
             $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
             $this->load->view('templates/Header');
@@ -125,7 +125,7 @@ class Visiteur extends CI_Controller {
             $this->load->view('templates/Header');
             $this->load->view('visiteur/crossing_times', $data);
 
-            $di['unSecteur'] = $this->ModeleInsert->getLiaisonsParSecteurID($liaison);
+            $di['unSecteur'] = $this->ModeleInsert->getLiaisonsParSecteurID($secteur);
             if (empty($di['unSecteur']))
             {
                 $di['Erreur'] = 'Aucune traversée disponible !';

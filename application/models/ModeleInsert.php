@@ -39,6 +39,11 @@
         return $requete->result();
     }
 
+    public function getDateLiaison($data)
+    {
+        
+    }
+
     //public function quantiteEnregistree($noTraversee, $lettreCategorie)
     //public function getLesTraverseesBateaux($noLiaison, $dateTraversee)
 //public function getCapaciteMaximale($noTraversee, $lettreCategorie)
