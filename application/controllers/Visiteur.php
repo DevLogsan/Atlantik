@@ -133,6 +133,22 @@ class Visiteur extends CI_Controller {
             $this->load->view('visiteur/option_liaison', $di);
         }
     }
+
+    public function crossing_table()
+    {
+        $this->form_validation->set_rules('lstLiaison', 'Liaison', 'required');
+        $this->form_validation->set_rules('txtDate', 'Date', 'required');
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            redirect('visiteur/crossing_times');
+        }
+        else
+        {
+            $noliaison = $this->input->post('lstLiaison');
+            $data['lesinfo'] = $this->ModeleInsert->retournerSecteurs($noliaison);
+        }
+    }
 }
 ?>
 

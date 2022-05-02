@@ -30,7 +30,7 @@
 
     public function getLiaisonsParSecteurID($data)
     {
-        $this->db->select('a.nom AS pD, d.nom AS pA');
+        $this->db->select('a.nom AS pD, d.nom AS pA, noliaison');
         $this->db->from('liaison as l, port as a, port as d');
         $this->db->where('a.noport = l.noport_depart AND l.noport_arrivee = d.noport');
         $this->db->where('nosecteur', $data);
@@ -39,7 +39,7 @@
         return $requete->result();
     }
 
-    public function getDateLiaison($data)
+    public function getInfo($data)
     {
         
     }
