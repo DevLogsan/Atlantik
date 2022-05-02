@@ -41,11 +41,14 @@
 
     public function getInfo($data)
     {
-        
+        $this->db->select('a.nom AS pD, d.nom AS pA, t.notraversee, dateheuredepart, b.nom');
+        $this->db->from('liaison as l, port as a, port as d, traversee as t, bateau as b');
+        $this->db->where('a.noport = l.noport_depart AND l.noport_arrivee = d.noport AND t.noliaison = l.noliaison AND t.nobateau = b.nobateau');
+        $this->db->where('nosecteur', $data);
     }
 
-    //public function quantiteEnregistree($noTraversee, $lettreCategorie)
-    //public function getLesTraverseesBateaux($noLiaison, $dateTraversee)
+//public function quantiteEnregistree($noTraversee, $lettreCategorie)
+//public function getLesTraverseesBateaux($noLiaison, $dateTraversee)
 //public function getCapaciteMaximale($noTraversee, $lettreCategorie)
 //public function getLesTraverseesBateaux($noLiaison, $dateTraversee)
 
