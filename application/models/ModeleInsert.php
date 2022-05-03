@@ -39,12 +39,16 @@
         return $requete->result();
     }
 
-    public function getInfo($data)
+    public function getInfo($data, $date)
     {
-        $this->db->select('a.nom AS pD, d.nom AS pA, t.notraversee, dateheuredepart, b.nom');
+        $this->db->select('a.nom AS pD, d.nom AS pA, t.notraversee, dateheuredepart, b.nom AS nombateau');
         $this->db->from('liaison as l, port as a, port as d, traversee as t, bateau as b');
         $this->db->where('a.noport = l.noport_depart AND l.noport_arrivee = d.noport AND t.noliaison = l.noliaison AND t.nobateau = b.nobateau');
         $this->db->where('nosecteur', $data);
+        $this->db->like('dateheuredepart', $date, 'after');
+
+        $requete = $this->db->get();
+        return $requete->result();
     }
 
 //public function quantiteEnregistree($noTraversee, $lettreCategorie)

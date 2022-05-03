@@ -113,40 +113,44 @@ class Visiteur extends CI_Controller {
 
     public function crossing_times($secteur = null)
     {
-        if($secteur === null)
-        {
-            $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
-            $this->load->view('templates/Header');
-            $this->load->view('visiteur/crossing_times', $data);
-        }
-        else
-        {
-            $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
-            $this->load->view('templates/Header');
-            $this->load->view('visiteur/crossing_times', $data);
-
-            $di['unSecteur'] = $this->ModeleInsert->getLiaisonsParSecteurID($secteur);
-            if (empty($di['unSecteur']))
-            {
-                $di['Erreur'] = 'Aucune traversée disponible !';
-            }
-            $this->load->view('visiteur/option_liaison', $di);
-        }
-    }
-
-    public function crossing_table()
-    {
         $this->form_validation->set_rules('lstLiaison', 'Liaison', 'required');
         $this->form_validation->set_rules('txtDate', 'Date', 'required');
 
+        $data['lesSecteurs'] = $this->ModeleInsert->retournerSecteurs();
+        $this->load->view('templates/Header');
+        
         if ($this->form_validation->run() === FALSE)
         {
-            redirect('visiteur/crossing_times');
+            if ($secteur === null) {
+                $this->load->view('visiteur/crossing_times', $data);
+            }
+            else
+            {
+                $this->load->view('visiteur/crossing_times', $data);
+                $di['unSecteur'] = $this->ModeleInsert->getLiaisonsParSecteurID($secteur);
+                $di['noSecteur'] = $secteur;
+
+                if (empty($di['unSecteur']))
+                {
+                    $di['Erreur'] = 'Aucune traversée disponible !';
+                }
+                else
+                {
+                    $this->load->view('visiteur/option_liaison', $di);    
+                }
+            }
         }
         else
         {
+            $data["noSecteur"] = $secteur;
+            $this->load->view('visiteur/crossing_times', $data);
+
             $noliaison = $this->input->post('lstLiaison');
-            $data['lesinfo'] = $this->ModeleInsert->retournerSecteurs($noliaison);
+            $date = $this->input->post('txtDate');
+
+            $data['lesinfo'] = $this->ModeleInsert->getInfo($noliaison, $date);
+            
+            $this->load->view('visiteur/crossing_table', $data);
         }
     }
 }

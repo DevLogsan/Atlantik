@@ -8,10 +8,10 @@
     ?>
 
 <div>
-    
 <?php
 echo validation_errors();
-echo form_open('visiteur/crossing_times');
+
+echo form_open('visiteur/crossing_times/'.$noSecteur);
 
     $data = [];
     foreach ($unSecteur as $uneLiaison)
