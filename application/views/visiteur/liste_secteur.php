@@ -1,11 +1,11 @@
-<div class="wrapper">
-    <nav id="sidebar">
-        <ul class="list-unstyled components">
+<div position: absolute;>
+    <nav>
+        <ul>
             <p>SECTEURS</p>
             <?php
                 foreach ($lesSecteurs as $unSecteur): 
                     echo '<li>'.anchor('visiteur/crossing_times/'.$unSecteur->nosecteur, $unSecteur->nom).'</li>';
-                endforeach
+                endforeach;
             ?>
         </ul>
     </nav>

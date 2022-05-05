@@ -69,5 +69,10 @@ class Client extends CI_Controller {
         redirect('client/parametre', 'refresh');
         }
     }
+
+    public function reservation($notraversee, $noliaison)
+    {
+        
+    }
 }
 ?>
