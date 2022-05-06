@@ -24,4 +24,9 @@
         $this->db->where('noclient', $NoClient);
         $this->db->update('client');
     }
+
+    public function insertUser($data)
+    {
+        $this->db->insert('client', $data);
+    }
 }

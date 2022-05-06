@@ -74,6 +74,8 @@ class Client extends CI_Controller {
     public function reservation($notraversee)
     {
         $data['laliaison'] = $this->ModeleTraversee->reservation($notraversee);
+        $data['LesColonnes'] = $this->ModeleTraversee->tableauReservation($notraversee);
+        $this->load->view('templates/Header');
         $this->load->view('client/reservation', $data);
     }
 }

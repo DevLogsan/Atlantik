@@ -12,7 +12,6 @@ class Visiteur extends CI_Controller {
         $this->load->model('ModeleUtilisateur');
         $this->load->model('ModeleSecteur');
         $this->load->model('ModeleLiaison');
-        $this->load->model('ModeleInsert');
         $this->load->library('session');
         $this->session->statut = 0;
     }
@@ -46,6 +45,9 @@ class Visiteur extends CI_Controller {
             {
                 $this->session->nom = $UtilisateurRetourner->nom;
                 $this->session->prenom = $UtilisateurRetourner->prenom;
+                $this->session->adresse = $UtilisateurRetourner->adresse;
+                $this->session->codepostal = $UtilisateurRetourner->codepostal;
+                $this->session->ville = $UtilisateurRetourner->ville;
                 $this->session->noclient = $UtilisateurRetourner->noclient;
                 $this->session->UtilisateurConnecter = 1;
                 
@@ -94,7 +96,7 @@ class Visiteur extends CI_Controller {
                 'motdepasse' => $this->input->post('txtMotDePasse'),
             );
 
-            $UtilisateurCreer = $this->ModeleInsert->insertUser($dataAccountInsert);
+            $UtilisateurCreer = $this->modeleUtilisateur-->insertUser($dataAccountInsert);
             redirect('/visiteur/login_up');
         }
     }
