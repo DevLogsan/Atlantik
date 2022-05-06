@@ -11,7 +11,7 @@
         echo '<p>'. 'CP : ' .$this->session->codepostal.' Ville : '. $this->session->ville.'</p>';
     }
     ?>
-    <table>
+    <table border=1 >
 <thead>
   <tr>
     <th></th>
@@ -19,9 +19,10 @@
   </tr>
 </thead>
 <tbody>
-    <?php foreach ($LesColonnes as $uneColonne) :
+    <?php
+    foreach ($LesColonnes as $uneColonne) :
             echo '<tr><td>'.$uneColonne->libelle.'</td><td>'.$uneColonne->tarif.'</td></tr>';
-        endforeach
+    endforeach
     ?>
 </tbody>
 </table>
