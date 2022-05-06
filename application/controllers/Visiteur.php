@@ -143,7 +143,6 @@ class Visiteur extends CI_Controller {
             $date = $this->input->post('txtDate');
 
             $data['date'] = $date;
-            $data['noliaison'] = $noliaison;
 
             $data['laliaison'] = $this->ModeleLiaison->getLiaisonsParNoLiaison($noliaison);
             $data['lesinfo'] = $this->ModeleLiaison->getInfo($noliaison, $date);

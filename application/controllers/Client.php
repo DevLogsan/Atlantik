@@ -7,6 +7,7 @@ class Client extends CI_Controller {
         $this->load->helper('assets');
         $this->load->library("pagination");
         $this->load->model('ModeleUtilisateur');
+        $this->load->model('ModeleTraversee');
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->helper('form');
@@ -70,9 +71,10 @@ class Client extends CI_Controller {
         }
     }
 
-    public function reservation($notraversee, $noliaison)
+    public function reservation($notraversee)
     {
-        
+        $data['laliaison'] = $this->ModeleTraversee->reservation($notraversee);
+        $this->load->view('client/reservation', $data);
     }
 }
 ?>
