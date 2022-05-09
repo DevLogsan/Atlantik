@@ -16,26 +16,28 @@
   <tr>
     <th></th>
     <th>Tarif en €</th>
+    <th>Quantité</th>
   </tr>
 </thead>
 <tbody>
     <?php
-    $quantite = [[]];
-    $quantite[$i]["lettrecategorie"];
-    $quantite[$i]["notype"];
+    $quantite = [];
     $i = 0;
 
-    foreach ($LesColonnes as $uneColonne) :
-        echo '<tr><td>'.$uneColonne->libelle.'</td><td>'.$uneColonne->tarif.'</td></tr>';
-    endforeach;
+    echo validation_errors();
+    echo form_open('Client/ValiderReservation');
 
-    foreach ($_POST['leslignes'] as $uneLigne) :
-      $quantite[$i] = ["lettrecategorie" => $lettrecategorie, "notype" => $notype];
-      $i++;
-    endforeach
-    echo form_input(array());
+    foreach ($LesColonnes as $uneColonne) :
+        echo '<tr><td>'.$uneColonne->libelle.'</td><td>'.$uneColonne->tarif.'</td><td>';
+        echo form_input($quantite = ["name" => $i, "lettrecategorie" => $uneColonne->lettrecategorie, "notype" => $uneColonne->notype]);
+        echo '</td></tr>';
+        $i++;
+    endforeach;
     ?>
 </tbody>
 </table>
-<?php endif; ?>
+<?php endif;
+echo form_submit(array('type' => 'submit', 'value' => 'Confirm'));
+echo form_close();
+?>
 </h4>

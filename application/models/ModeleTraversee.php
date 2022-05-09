@@ -19,7 +19,7 @@
 
     public function tableauReservation($notraversee)
     {
-        $this->db->select('ta.tarif as tarif, t.libelle as libelle, t.lettrecategorie, t.notype');
+        $this->db->select('ta.tarif as tarif, t.libelle as libelle, t.lettrecategorie as lettrecategorie, t.notype as notype');
         $this->db->from('type as t, tarifer as ta, periode as p , traversee as tr');
         $this->db->where('t.lettrecategorie = ta.lettrecategorie AND t.notype = ta.notype AND p.noperiode = ta.noperiode AND p.datedebut <= DATE(tr.dateheuredepart) AND p.datefin >= DATE(tr.dateheuredepart) AND tr.noliaison = ta.noliaison');
         $this->db->where('tr.notraversee', $notraversee);
@@ -27,11 +27,6 @@
 
         $requete = $this->db->get();
         return $requete->result();
-    }
-
-    public function insererReservation($notraversee, $noclient)
-    {
-        
     }
 }
 ?>

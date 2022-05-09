@@ -78,5 +78,10 @@ class Client extends CI_Controller {
         $this->load->view('templates/Header');
         $this->load->view('client/reservation', $data);
     }
+
+    public function ValiderReservation()
+    {
+        
+    }
 }
 ?>
