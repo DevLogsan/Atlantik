@@ -20,9 +20,20 @@
 </thead>
 <tbody>
     <?php
+    $quantite = [[]];
+    $quantite[$i]["lettrecategorie"];
+    $quantite[$i]["notype"];
+    $i = 0;
+
     foreach ($LesColonnes as $uneColonne) :
-            echo '<tr><td>'.$uneColonne->libelle.'</td><td>'.$uneColonne->tarif.'</td></tr>';
+        echo '<tr><td>'.$uneColonne->libelle.'</td><td>'.$uneColonne->tarif.'</td></tr>';
+    endforeach;
+
+    foreach ($_POST['leslignes'] as $uneLigne) :
+      $quantite[$i] = ["lettrecategorie" => $lettrecategorie, "notype" => $notype];
+      $i++;
     endforeach
+    echo form_input(array());
     ?>
 </tbody>
 </table>
