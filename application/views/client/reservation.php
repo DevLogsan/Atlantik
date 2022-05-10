@@ -21,7 +21,7 @@
 </thead>
 <tbody>
     <?php
-    $quantite = [];
+    $quantite = [[]];
     $i = 0;
 
     echo validation_errors();
@@ -29,7 +29,7 @@
 
     foreach ($LesColonnes as $uneColonne) :
         echo '<tr><td>'.$uneColonne->libelle.'</td><td>'.$uneColonne->tarif.'</td><td>';
-        echo form_input($quantite = ["name" => $i, "lettrecategorie" => $uneColonne->lettrecategorie, "notype" => $uneColonne->notype]);
+        echo form_input($quantite[$i] = ["name" => $i, "lettrecategorie" => $uneColonne->lettrecategorie, "notype" => $uneColonne->notype]);
         echo '</td></tr>';
         $i++;
     endforeach;

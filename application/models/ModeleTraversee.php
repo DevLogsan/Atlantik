@@ -28,5 +28,23 @@
         $requete = $this->db->get();
         return $requete->result();
     }
+
+    public function validerReservation($data)
+    {
+        $this->db->insert('reservation', $data);
+    }
+
+    public function getType()
+    {
+        $requete = $this->db->get('type');
+        return $requete->result();
+    }
+
+    public function getTarif()
+    {
+        $this->db->select('');
+        $this->db->from('');
+        $this->db->where('');
+    }
 }
 ?>

@@ -12,6 +12,7 @@ class Client extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper('form');
         
+        
         if ($this->session->UtilisateurConnecter == 0)
         {
             redirect('/visiteur/login_up');
@@ -73,15 +74,34 @@ class Client extends CI_Controller {
 
     public function reservation($notraversee)
     {
+        $noclient = $this->session->noclient;
+
+        $this->form_validation->set_rules('txtNom', 'Nom', 'required');
+
         $data['laliaison'] = $this->ModeleTraversee->reservation($notraversee);
         $data['LesColonnes'] = $this->ModeleTraversee->tableauReservation($notraversee);
-        $this->load->view('templates/Header');
-        $this->load->view('client/reservation', $data);
-    }
 
-    public function ValiderReservation()
-    {
-        
+        if ($this->form_validation->run() === FALSE) 
+        {
+            $this->load->view('templates/Header');
+            $this->load->view('client/reservation', $data);
+        }
+        else
+        {
+            $nombreType = count($this->ModeleTraversee->getType()) - 1;
+
+            for ($i=0; $i < $nombreType; $i++) { 
+                $this->input->post($i) * $this->input->post($i);
+            }
+            return 
+
+            $data = array(
+                'notraversee' => $notraversee,
+                'noclient' => $noclient,
+                'dateheure' => date('Y-m-d H:i:s'),
+                'montanttotal' => $montantTotal,
+            );
+        }
     }
 }
 ?>
