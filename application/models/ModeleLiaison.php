@@ -34,12 +34,11 @@
         $this->db->from('liaison as l, port as a, port as d, traversee as t, bateau as b');
         $this->db->where('a.noport = l.noport_depart AND l.noport_arrivee = d.noport AND t.noliaison = l.noliaison AND t.nobateau = b.nobateau');
         $this->db->where('l.noliaison', $noliaison);
-        $this->db->like('dateheuredepart', $date, 'after');
+        $this->db->like('dateheuredepart', $date);
 
         $requete = $this->db->get();
         return $requete->result();
     }
-
 
     public function getLiaisonsParNoLiaison($noliaison)
     {

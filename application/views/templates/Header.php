@@ -14,7 +14,7 @@
     <?php if ($this->session->UtilisateurConnecter == 1) : ?>
         <a href="<?php echo site_url('client/parametre') ?>"><i class="fa fa-fw fa-user"></i> My account : <?php echo $this->session->nom,' '.$this->session->prenom ;?></a>
         <a href="<?php echo site_url('visiteur/logout') ?>">Logout</a>
-        <a href="<?php echo site_url('client/historiqueReservation') ?>">My reservations (Mes réservations)</a>
+        <a href="<?php echo site_url('client/old_reservation') ?>">My reservations (Mes réservations)</a>
     <?php else : ?>
         <a href="<?php echo site_url('visiteur/login_up') ?>">Se Connecter</a>
         <a href="<?php echo site_url('visiteur/register') ?>">Créer un compte</a>

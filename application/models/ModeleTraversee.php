@@ -21,7 +21,7 @@
     {
         $this->db->select('ta.tarif as tarif, t.libelle as libelle, t.lettrecategorie as lettrecategorie, t.notype as notype');
         $this->db->from('type as t, tarifer as ta, periode as p , traversee as tr');
-        $this->db->where('t.lettrecategorie = ta.lettrecategorie AND t.notype = ta.notype AND p.noperiode = ta.noperiode AND p.datedebut <= DATE(tr.dateheuredepart) AND p.datefin >= DATE(tr.dateheuredepart) AND tr.noliaison = ta.noliaison');
+        $this->db->where('t.lettrecategorie = ta.lettrecategorie AND t.notype = ta.notype AND p.noperiode = ta.noperiode AND p.datedebut <= DATE(tr.dateheuredepart) AND p.datefin >= DATE(tr.dateheurearrivee) AND tr.noliaison = ta.noliaison');
         $this->db->where('tr.notraversee', $notraversee);
         $this->db->group_by('ta.tarif');
 
@@ -38,13 +38,6 @@
     {
         $requete = $this->db->get('type');
         return $requete->result();
-    }
-
-    public function getTarif()
-    {
-        $this->db->select('');
-        $this->db->from('');
-        $this->db->where('');
     }
 }
 ?>

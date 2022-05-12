@@ -15,13 +15,13 @@
 <?php
 $repetition = "";
 foreach ($lesLiaisonsParSecteurs as $uneLigne) :
-  if ($uneLigne->nom == $repetition )
+  if ($uneLigne->nom == $repetition)
   {
-  echo '<tr><td></td><td>'. anchor('visiteur/link_price/'.$uneLigne->noliaison.'-'.$uneLigne->pD.'-'.$uneLigne->pA,$uneLigne->noliaison) .'</td><td>'. $uneLigne->distance .'</td><td>'. $uneLigne->pD .'</td><td>'. $uneLigne->pA .'</td></tr>';
+  echo '<tr><td></td><td>'. anchor('visiteur/link_price/'.$uneLigne->noliaison, $uneLigne->noliaison) .'</td><td>'. $uneLigne->distance .'</td><td>'. $uneLigne->pD .'</td><td>'. $uneLigne->pA .'</td></tr>';
   }
   else
   {
-    echo '<tr><td>'. $uneLigne->nom .'</td><td>'. anchor('visiteur/link_price/'.$uneLigne->noliaison.'-'.$uneLigne->pD.'-'.$uneLigne->pA,$uneLigne->noliaison) .'</td><td>'. $uneLigne->distance .'</td><td>'. $uneLigne->pD .'</td><td>'. $uneLigne->pA .'</td></tr>';
+    echo '<tr><td>'. $uneLigne->nom .'</td><td>'. anchor('visiteur/link_price/'.$uneLigne->noliaison, $uneLigne->noliaison) .'</td><td>'. $uneLigne->distance .'</td><td>'. $uneLigne->pD .'</td><td>'. $uneLigne->pA .'</td></tr>';
   }
   $repetition = $uneLigne->nom;
 endforeach

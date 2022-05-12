@@ -115,6 +115,11 @@ class Visiteur extends CI_Controller {
         $this->load->view('visiteur/liste_liaison', $data);
     }
 
+    public function link_price($noliaison)
+    {
+        
+    }
+
     public function crossing_times($secteur = null)
     {
         $this->form_validation->set_rules('lstLiaison', 'Liaison', 'required');

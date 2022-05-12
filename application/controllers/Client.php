@@ -88,12 +88,17 @@ class Client extends CI_Controller {
         }
         else
         {
-            $nombreType = count($this->ModeleTraversee->getType()) - 1;
+            //$nombreType = count($this->ModeleTraversee->getType()) - 1;
 
-            for ($i=0; $i < $nombreType; $i++) { 
-                $this->input->post($i) * $this->input->post($i);
+            $options = array();
+            foreach($this->input->post() as $key => $val)  
+            {
+                if ($this->input->post($key) != 0)
+                { 
+                    $options[] = $this->input->post($key);
+                }
             }
-            return 
+            return $options;
 
             $data = array(
                 'notraversee' => $notraversee,
