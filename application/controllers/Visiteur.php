@@ -41,7 +41,7 @@ class Visiteur extends CI_Controller {
             $MdP = $this->input->post('txtMotDePasse');
             $UtilisateurRetourner = $this->ModeleUtilisateur->retournerUtilisateur($Mel, $MdP);
 
-            if (!($UtilisateurRetourner == null)) 
+            if (!($UtilisateurRetourner == null))
             {
                 $this->session->nom = $UtilisateurRetourner->nom;
                 $this->session->prenom = $UtilisateurRetourner->prenom;
@@ -117,7 +117,9 @@ class Visiteur extends CI_Controller {
 
     public function link_price($noliaison)
     {
-        
+        $data['lesColonnes'] = $this->ModeleLiaison->getTarifPourUneLiaison($noliaison);
+        $data['lesLiaisons'] = $this->ModeleLiaison->getLiaisonsParNoLiaison($noliaison);
+        $this->load->view('visiteur/tarif_liaison', $data);  
     }
 
     public function crossing_times($secteur = null)

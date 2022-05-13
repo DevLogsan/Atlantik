@@ -20,7 +20,7 @@
     <?php
     if ($this->session->UtilisateurConnecter == 1) {
         foreach ($lesinfo as $uneInfo) :
-            echo '<tr><td>'. anchor('client/reservation/'. $uneInfo->notraversee, $uneInfo->notraversee). '</td><td>'. $uneInfo->dateheuredepart = date("H:i", strtotime($uneInfo->dateheuredepart)) .'</td><td>'. $uneInfo->nombateau .'</td></tr>';
+            echo '<tr><td>'. anchor('client/reservation/'. $uneInfo->notraversee.'/'.$date, $uneInfo->notraversee). '</td><td>'. $uneInfo->dateheuredepart = date("H:i", strtotime($uneInfo->dateheuredepart)) .'</td><td>'. $uneInfo->nombateau .'</td></tr>';
         endforeach;
     }
     else

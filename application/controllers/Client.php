@@ -72,7 +72,7 @@ class Client extends CI_Controller {
         }
     }
 
-    public function reservation($notraversee)
+    public function reservation($notraversee, $date)
     {
         $noclient = $this->session->noclient;
 

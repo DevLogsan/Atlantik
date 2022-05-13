@@ -42,13 +42,23 @@
 
     public function getLiaisonsParNoLiaison($noliaison)
     {
-        $this->db->select('a.nom AS pD, d.nom AS pA, noliaison');
+        $this->db->select('a.nom AS pD, d.nom AS pA, l.noliaison');
         $this->db->from('liaison as l, port as a, port as d');
         $this->db->where('a.noport = l.noport_depart AND l.noport_arrivee = d.noport');
         $this->db->where('l.noliaison', $noliaison);
 
         $requete = $this->db->get();
         return $requete->result();
+    }
+
+    public function getTarifPourUneLiaison($noliaison)
+    {
+        $this->db->select('li.noliaison, ty.lettrecategorie, c.libelle, c.lettrecategorie, ty.notype, ty.libelle, datedebut, datefin');
+        $this->db->distinct();
+        $this->db->from('type as ty, categorie as c, liaison as li, traversee as tr, periode as p, tarifer as ta');
+        $this->db->where('ty.lettrecategorie = c.lettrecategorie and li.noliaison = tr.noliaison and ta.noperiode = p.noperiode and ta.noliaison = li.noliaison and datedebut <= datefin');
+        $this->db->where('li.noliaison', $noliaison);
+        $this->db->order_by('c.lettrecategorie ASC');
     }
 }
 ?>  

@@ -1,6 +1,6 @@
 <?php
   echo validation_errors();
-  echo "<div style='padding-left: 300px; padding-right: 300px; padding-top: 50px'>";
+  echo "<div style='padding-left: 300px; padding-right: 300px; padding-top: 0px'>";
   echo form_open('Client/parametre');
 
   echo form_label('Name : ','', array('style' => 'color: white; '));
