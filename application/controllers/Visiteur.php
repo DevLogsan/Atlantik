@@ -117,8 +117,12 @@ class Visiteur extends CI_Controller {
 
     public function link_price($noliaison)
     {
+        $this->load->view('templates/Header');
+        
         $data['lesColonnes'] = $this->ModeleLiaison->getTarifPourUneLiaison($noliaison);
         $data['lesLiaisons'] = $this->ModeleLiaison->getLiaisonsParNoLiaison($noliaison);
+
+        
         $this->load->view('visiteur/tarif_liaison', $data);  
     }
 

@@ -53,12 +53,16 @@
 
     public function getTarifPourUneLiaison($noliaison)
     {
-        $this->db->select('li.noliaison, ty.lettrecategorie, c.libelle, c.lettrecategorie, ty.notype, ty.libelle, datedebut, datefin');
+        $date = date("Y/m/d");
+
+        $this->db->select('li.noliaison as noliaison, t.lettrecategorie as tylettrecategorie, c.libelle as clibelle, c.lettrecategorie as clettre, t.notype, t.libelle as tylibelle, datedebut, datefin, tarif');
         $this->db->distinct();
-        $this->db->from('type as ty, categorie as c, liaison as li, traversee as tr, periode as p, tarifer as ta');
-        $this->db->where('ty.lettrecategorie = c.lettrecategorie and li.noliaison = tr.noliaison and ta.noperiode = p.noperiode and ta.noliaison = li.noliaison and datedebut <= datefin');
+        $this->db->from('type as t, categorie as c, liaison as li, traversee as tr, periode as p, tarifer as ta');
+        $this->db->where('t.lettrecategorie = c.lettrecategorie and li.noliaison = tr.noliaison and ta.noperiode = p.noperiode and ta.noliaison = li.noliaison');
+        $this->db->where('datefin >=', $date);
         $this->db->where('li.noliaison', $noliaison);
-        $this->db->order_by('c.lettrecategorie ASC');
+        $this->db->group_by('datedebut, t.libelle');
+        $this->db->order_by('t.lettrecategorie ASC');
     }
 }
 ?>  

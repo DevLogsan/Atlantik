@@ -7,6 +7,7 @@ class Client extends CI_Controller {
         $this->load->helper('assets');
         $this->load->library("pagination");
         $this->load->model('ModeleUtilisateur');
+        $this->load->model('ModeleReservation');
         $this->load->model('ModeleTraversee');
         $this->load->library('session');
         $this->load->library('form_validation');
@@ -107,6 +108,32 @@ class Client extends CI_Controller {
                 'montanttotal' => $montantTotal,
             );
         }
+    }
+
+    public function old_reservation()
+    {
+        $noclient = $this->session->noclient;
+
+        $config = array();
+        $config["base_url"] = site_url('client/old_reservation');
+        $config["total_rows"] = $this->ModeleReservation->nombreReservation($noclient);
+        $config["per_page"] = 3;
+        $config["uri_segment"] = 3;
+
+        $config['first_link'] = 'Premier';
+        $config['last_link'] = 'Dernier';
+        $config['next_link'] = 'Suivant';
+        $config['prev_link'] = 'Précédent';
+
+        $this->pagination->initialize($config);
+
+        $noPage = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $data["lesReservations"] = $this->ModeleReservation->getReservationClient($noclient, $config["per_page"], $noPage);
+        $data["liensPagination"] = $this->pagination->create_links();
+
+        $this->load->view('templates/Header');
+        $this->load->view('client/old_reservation', $data);
     }
 }
 ?>
