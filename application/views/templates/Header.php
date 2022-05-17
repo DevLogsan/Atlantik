@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="<?php echo css_url('style_navbar') ?>" rel="stylesheet" type="text/css">
         <link href="<?php echo css_url('style_footer') ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo css_url('style_carousel') ?>" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 <body> 

@@ -19,6 +19,7 @@ class Visiteur extends CI_Controller {
     public function homepage()
     {
         $this->load->view('templates/Header');
+        $this->load->view('visiteur/homepage');
         $this->load->view('templates/Footer');
     }
 

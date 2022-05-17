@@ -1,3 +1,14 @@
+<?php
+    if(empty($lesLiaisons))
+    {
+        ?>
+        <p>Il n'y a rien ici !</p>
+        <?php
+    }
+    else
+    {
+    ?>
+
 <table border=1>
 <thead>
   <tr>
@@ -59,3 +70,4 @@ foreach ($lesLiaisons as $uneLiaison) :
   endforeach
 ?>
 </table>
+<?php } ?>
